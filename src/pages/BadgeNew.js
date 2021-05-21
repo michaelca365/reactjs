@@ -5,6 +5,24 @@ import header from "../images/badge-header.svg";
 import BadgeForm from "../components/BadgeForm";
 import Badge from "../components/Badge";
 class BadgeNew extends Component {
+  state = {
+    form: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      jobTitle: '',
+      twitter: ''
+    }
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
   render() {
     return (
       <div>
@@ -17,15 +35,16 @@ class BadgeNew extends Component {
           <div className="row">
             <div className="col-6">
               <Badge
-                firstName="Michael"
-                lastName="Camelo"
-                twitter="@MikeSteve"
-                jobTittle="Fullstack developer"
+                firstName={this.state.form.firstName}
+                lastName={this.state.form.lastName}
+                twitter={this.state.form.twitter}
+                jobTitle={this.state.form.jobTitle}
+                email={this.state.form.email}
                 avatarUrl="https://avatars.githubusercontent.com/u/79426814?v=4"
               />
             </div>
             <div className="col-6">
-              <BadgeForm />
+              <BadgeForm onChange={this.handleChange} formValue={this.state.form} />
             </div>
           </div>
         </div>
