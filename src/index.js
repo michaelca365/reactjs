@@ -9,9 +9,9 @@ const container = document.getElementById('app');
 
 ReactDOM.render(
   <Badge
-    firstName="Richard"
-    lastName="Kaufman"
-    avatarUrl="https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon"
+    firstName="Michael"
+    lastName="Camelo"
+    avatarUrl="https://avatars.githubusercontent.com/u/79426814?v=4"
     jobTitle="Frontend Engineer"
     twitter="sparragus"
   />,
