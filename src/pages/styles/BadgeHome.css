@@ -1,0 +1,61 @@
+body {
+  height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+#container {
+  flex: 2;
+  width: 100%;
+  display: flex;
+  background: url("../../images/stars.svg"), #1b1b25;
+  background-repeat: repeat;
+  background-size: contain;
+}
+
+#container > div {
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#container > div:first-child {
+  width: 40%;
+}
+
+#container > div:nth-child(2) {
+  width: 60%;
+}
+
+#container > div:first-child img {
+  width: 80%;
+}
+
+#container > div:first-child h5 {
+    padding-top: 5px;
+    width: 80%;
+    font-size: 2em;
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+    color: gainsboro;
+    font-weight: bold;
+}
+
+#container > div:first-child p {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: gainsboro;
+    text-align:center;
+    width: 80%;
+    font-weight: bold;
+    padding: 0;
+    font-size: 1em;
+}
+
+#container > div:nth-child(2) img {
+  width: 70%;
+}
