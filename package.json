@@ -13,11 +13,15 @@
   },
   "dependencies": {
     "bootstrap": "^4.6.0",
+    "md5": "^2.3.0",
     "react": "17.0.2",
     "react-bootstrap": "^1.6.0",
     "react-dom": "17.0.2",
+    "react-loading-skeleton": "^2.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "sweetalert2": "^11.0.12",
+    "sweetalert2-react-content": "^4.0.1"
   },
   "devDependencies": {
     "faker": "^5.5.3",

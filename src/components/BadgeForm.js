@@ -1,26 +1,27 @@
 import { Component } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 class BadgeForm extends Component {
-  //state = {};
-  //   handleChange = (e) => {
-  //     this.setState({
-  //       [e.target.name]: e.target.value,
-  //     });
-  //   };
   handleClick = (e) => {
     console.log("Button was click");
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.state);
-    console.log("Form was submitted");
-  };
+  swalContent() {
+    const MySwal = withReactContent(Swal);
+    MySwal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "500: server error!",
+      footer: "<a href>Why do I have this issue?</a>",
+    })
+  }
+
   render() {
     return (
       <div>
         <h1>New Attendant</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.onSubmit}>
           <div className="form-group">
             <label htmlFor="">First Name</label>
             <input
@@ -75,6 +76,7 @@ class BadgeForm extends Component {
             Save
           </button>
         </form>
+        {this.props.error && this.swalContent()}
       </div>
     );
   }

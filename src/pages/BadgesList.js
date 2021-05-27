@@ -1,8 +1,20 @@
 import React from "react";
 import twitterLogo from "../images/gorjeo.svg";
 import "./styles/BadgeList.css";
+import { Link } from 'react-router-dom';
+import Gravatar from "../components/Gravatar";
 class BadgesList extends React.Component {
   render() {
+    if(this.props.badges.length === 0){
+      return (
+        <div>
+          <h3>
+            No badge were found
+            <Link className="btn btn-primary" to="/badges/new" >Create New Badge</Link>
+          </h3>
+        </div>
+      )
+    }
     return (
       <ul className="list-unstyled">
         {this.props.badges.map((badge) => {
@@ -11,7 +23,7 @@ class BadgesList extends React.Component {
               <div>
                 <div className="avatar">
                   <span>
-                    <img src={badge.avatarUrl} alt="user avatar" />
+                    <Gravatar className="gravatar" email={badge.email} alt="user avatar" />
                   </span>
                 </div>
                 <div className="userContent">

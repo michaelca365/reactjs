@@ -3,7 +3,7 @@ const path = require('path');
 const faker = require('faker');
 const md5 = require('md5');
 
-function createBadges(limit = 50) {
+function createBadges(limit = 5) {
   const result = [];
 
   for (let i = 0; i < limit; i++) {
@@ -11,7 +11,7 @@ function createBadges(limit = 50) {
     const lastName = faker.name.lastName();
     const email = faker.internet.email();
 
-    result.push({
+    result.unshift({
       id: faker.random.uuid(),
       firstName,
       lastName,
