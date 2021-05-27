@@ -11,20 +11,20 @@ class BadgesList extends React.Component {
               <div>
                 <div className="avatar">
                   <span>
-                    <img src={badge.avatarUrl} alt="user avatar" />
+                    <img src={badge.image} alt="user avatar" />
                   </span>
                 </div>
                 <div className="userContent">
                   <h5>
-                    {badge.firstName} {badge.lastName}
+                    {badge.name}
                   </h5>
                   <div className="userTwitter">
                     <span>
                       <img src={twitterLogo} alt="TwitterLogo" />
                     </span>
-                    <p>@{badge.twitter}</p>
+                    <p>@{badge.origin.name}</p>
                   </div>
-                  <p>{badge.jobTitle}</p>
+                  <p>{badge.species}</p>
                 </div>
               </div>
             </li>
