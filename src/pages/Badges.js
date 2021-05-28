@@ -3,15 +3,13 @@ import BadgesList from "./BadgesList";
 import confLogo from "../images/badge-header.svg";
 import "./styles/Badges.css";
 import { Link } from "react-router-dom";
-import api from '../API';
-import Skeleton from 'react-loading-skeleton';
-import PageError from '../components/pageError.js';
-
+import api from "../API";
+import Skeleton from "react-loading-skeleton";
+import PageError from "../components/pageError.js";
 
 class Badges extends React.Component {
   constructor(props) {
     super(props);
-    console.log("1. Contructor()");
     this.state = {
       loading: true,
       error: null,
@@ -19,30 +17,46 @@ class Badges extends React.Component {
     };
   }
   componentDidMount() {
-    console.log("3. ComponentDidMount");
     this.fetchData();
+    this.unsetInterval = setInterval(this.fetchData, 10000);
   }
 
-  async fetchData(){
-    this.setState({loading: true, error: null});
+  componentWillUnmount(){
+    clearInterval(this.unsetInterval);
+  }
+
+  fetchData = async () => {
+    this.setState({ loading: true, error: null });
     try {
       const data = await api.badges.list();
-      this.setState({loading: false, data });
+      this.setState({ loading: false, data });
     } catch (error) {
-      this.setState({loading: false, error });
+      this.setState({ loading: false, error });
     }
-  }
+  };
   render() {
-    if(this.state.loading){
-      
+    if (this.state.loading && !this.state.data) {
       return (
+        <Skeleton
+          style={{
+            display: "block",
+            marginTop: "10px",
+            marginLeft: "auto",
+            marginRight: "auto",
+            alignContent: "center",
+          }}
+          width="548px"
+          height="112px"
+          count={5}
+          animation="wave"
+        />
+      );
+    }
 
-        <Skeleton style={{display: "block", marginTop: "10px", marginLeft: "auto", marginRight: "auto", alignContent: "center"}} width="548px" height="112px" count={5} animation="wave" />
-      )
+    if (this.state.error) {
+      return <PageError error={this.state.error} />;
     }
-    if(this.state.error){
-      return <PageError error={this.state.error} />
-    }
+
     return (
       <React.Fragment>
         <div className="Badges">
@@ -66,6 +80,7 @@ class Badges extends React.Component {
           <div className="Badges__list">
             <div className="Badges__container">
               <BadgesList badges={this.state.data} />
+              { this.state.loading && 'Loading..' }
             </div>
           </div>
         </div>
